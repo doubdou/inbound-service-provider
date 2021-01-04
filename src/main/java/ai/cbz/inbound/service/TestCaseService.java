@@ -61,17 +61,23 @@ public class TestCaseService {
     }
 
     public  boolean updateUser(UserInfoDTO user){
-        //需要检查是否存在这个key
+        //需要检查内存中key是否存在
 
+        //更新内存
         userMap.put(user.getPhoneNumber(), user);
         Long phoneNumber = user.getPhoneNumber();
+        //更新redis
         redisDao.hSetObject(TestCaseConst.REDIS_KEY, phoneNumber.toString(),user);
         return true;
     }
 
     public boolean deleteUserById(Long phoneNumber){
+        //检查是否存在
+
+        //在内存中删除
         userMap.remove(phoneNumber);
         UserInfoDTO user = new UserInfoDTO(phoneNumber,null);
+        //在redis中删除
         redisDao.hSetObject(TestCaseConst.REDIS_KEY,phoneNumber.toString(),user);
         return true;
     }

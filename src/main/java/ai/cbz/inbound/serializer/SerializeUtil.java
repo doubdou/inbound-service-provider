@@ -14,7 +14,6 @@ public class SerializeUtil {
         if (value == null) {
             throw new NullPointerException("Can't serialize null");
         }
-        System.out.println("serializing ....");
         byte[] rv = null;
         ByteArrayOutputStream bos = null;
         ObjectOutputStream os = null;

@@ -39,9 +39,12 @@ public class UserInfoDTO implements Serializable {
                 '}';
     }
 
-    public UserNode popNode(){
-         UserNode node = nodes.get(0);
-         nodes.remove(0);
-         return node;
+    public UserNode popNode() {
+        if (nodes.size() > 0) {
+            UserNode node = nodes.get(0);
+            nodes.remove(0);
+            return node;
+        }
+        return null;
     }
 }
