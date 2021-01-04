@@ -47,18 +47,18 @@ public class DialogueMockService implements IDialogService {
         DialogAction action = new DialogAction();
         switch (node.getTypeEnum()){
             case NODE_TYPE_REFUSE:
-                action.setAction(DialogActionTypeEnum.DM_CC_CHAT_REFUSE);
+                action.setAction(DialogActionTypeEnum.DM_AA_CHAT_REFUSE);
                 break;
 
             case NODE_TYPE_PRE_ANSWER:
-                action.setAction(DialogActionTypeEnum.DM_CC_CHAT_PRE_ANSWER);
+                action.setAction(DialogActionTypeEnum.DM_AA_CHAT_PRE_ANSWER);
                 break;
             case NODE_TYPE_ANSWER:
-                action.setAction(DialogActionTypeEnum.DM_CC_CHAT_ANSWER);
+                action.setAction(DialogActionTypeEnum.DM_AA_CHAT_ANSWER);
                 System.out.println("应答节点:");
                 break;
             case NODE_TYPE_PLAY_FILE:
-                action.setAction(DialogActionTypeEnum.DM_CC_CHAT_PLAY_FILE);
+                action.setAction(DialogActionTypeEnum.DM_AA_CHAT_PLAY_FILE);
                 DialogPlayFileParams dialogPlayFileParams = new DialogPlayFileParams();
                 //添加节点参数
                 dialogPlayFileParams.setPath(node.getPath());
@@ -66,20 +66,20 @@ public class DialogueMockService implements IDialogService {
                 action.setParams(dialogPlayFileParams);
                 break;
             case NODE_TYPE_STOP_PLAY:
-                action.setAction(DialogActionTypeEnum.DM_CC_CHAT_PAUSE_PLAY);
+                action.setAction(DialogActionTypeEnum.DM_AA_CHAT_PAUSE_PLAY);
                 break;
             case NODE_TYPE_PLAY_TTS:
-                action.setAction(DialogActionTypeEnum.DM_CC_CHAT_PLAY_TTS);
+                action.setAction(DialogActionTypeEnum.DM_AA_CHAT_PLAY_TTS);
                 DialogPlayTTSParams dialogPlayTTSParams = new DialogPlayTTSParams();
                 //添加参数
                 dialogPlayTTSParams.setText(node.getText());
                 action.setParams(dialogPlayTTSParams);
                 break;
             case NODE_TYPE_RECOGNIZE:
-                action.setAction(DialogActionTypeEnum.DM_CC_CHAT_DETECT_SPEECH);
+                action.setAction(DialogActionTypeEnum.DM_AA_CHAT_DETECT_SPEECH);
                 break;
             case NODE_TYPE_WAIT:
-                action.setAction(DialogActionTypeEnum.DM_CC_CHAT_WAIT);
+                action.setAction(DialogActionTypeEnum.DM_AA_CHAT_WAIT);
                 DialogWaitParams dialogWaitParams = new DialogWaitParams();
                 //添加节点参数
                 dialogWaitParams.setTimeout(node.getTimeout());
@@ -88,7 +88,7 @@ public class DialogueMockService implements IDialogService {
                 break;
             case NODE_TYPE_HANGUP:
             default:
-                action.setAction(DialogActionTypeEnum.DM_CC_CHAT_HANGUP);
+                action.setAction(DialogActionTypeEnum.DM_AA_CHAT_HANGUP);
         }
 
         dialogData.addAction(action);
@@ -126,13 +126,13 @@ public class DialogueMockService implements IDialogService {
 
 //        if(counter == 0) {
 //            DialogAction createAction = new DialogAction();
-//            createAction.setAction(DialogActionTypeEnum.DM_CC_CHAT_CREATE_COMPLETE);
+//            createAction.setAction(DialogActionTypeEnum.DM_AA_CHAT_CREATE_COMPLETE);
 //            dialogData.addAction(createAction);
 //            response.setMsg("demo first msg create session...");
 //            counter++;
 //        }else {
 //            DialogAction playAction = new DialogAction();
-//            playAction.setAction(DialogActionTypeEnum.DM_CC_CHAT_PLAY_FILE);
+//            playAction.setAction(DialogActionTypeEnum.DM_AA_CHAT_PLAY_FILE);
 //            DialogPlayFileParams dialogPlayFileParams = new DialogPlayFileParams();
 //            dialogPlayFileParams.setPath("/opt/fs-hlr/sounds/wanda.wav");
 //            playAction.setParams(dialogPlayFileParams);
